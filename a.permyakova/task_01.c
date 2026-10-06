@@ -53,7 +53,9 @@ int main(int argc, char *argv[])
             setrlimit(RLIMIT_CORE, &lim);
             break;
         case 'd':
-            printf("cwd=%s\n", getcwd(NULL, 0));
+            ;	
+            char buf[1024];
+	    printf("cwd=%s\n", getcwd(buf, sizeof buf) ? buf : "(error)");
             break;
         case 'v':
             while (*environ) printf("%s\n", *environ++);
